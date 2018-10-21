@@ -20,12 +20,14 @@ class TodoItem extends React.Component {
   render() {
     return (
       <div>
-        <input
-          className="input"
-          type="checkbox"
-          checked={this.props.done}
-          onChange={this.handleChange} />
-        {this.props.text}
+        <div>
+          <input
+            className="input"
+            type="checkbox"
+            checked={this.props.done}
+            onChange={this.handleChange} />
+          {this.props.text}
+        </div>
       </div>
     )
   }

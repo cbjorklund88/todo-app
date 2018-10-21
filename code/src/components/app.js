@@ -37,8 +37,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="to-do-container">
-          <h1> To-do list </h1>
+        <div className="todo-container">
+          <h1> Things to do </h1>
           <form>
             <div className="input-container">
               <input type="text" onChange={this.handleInputChange} placeholder="Add item.." />
@@ -46,14 +46,14 @@ class App extends React.Component {
             </div>
           </form>
 
-        {this.state.todoItems.map((item, index ) => (
-          <TodoItem
-            text={item.text}
-            key={index}
-            index={index}
-            done={item.done}
-            updateTodoItem={this.updateTodoItem} />
-        ))}
+          {this.state.todoItems.map((item, index ) => (
+            <TodoItem
+              text={item.text}
+              key={index}
+              index={index}
+              done={item.done}
+              updateTodoItem={this.updateTodoItem} />
+          ))}
         </div>
       </div>
     )
