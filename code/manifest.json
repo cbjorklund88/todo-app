@@ -1,10 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 1,
   "name": "TODO",
   "description": "",
   "version": "1.0",
   "browser_action": {
     "default_icon": "public/icon.png",
-    "default_popup": "public/index.html"
+    "default_popup": "index.html"
   }
 }
