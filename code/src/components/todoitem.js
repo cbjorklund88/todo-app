@@ -16,18 +16,21 @@ class TodoItem extends React.Component {
       done: !this.state.done
     })
   }
+  handleRemoveTodo = (e) => {
+    e.preventDefault()
+    this.props.removeTodo(this.props.index)
+  }
 
   render() {
     return (
-      <div>
-        <div>
-          <input
-            className="input"
-            type="checkbox"
-            checked={this.props.done}
-            onChange={this.handleChange} />
-          {this.props.text}
-        </div>
+      <div className="added-item-container">
+        <button onClick={this.handleRemoveTodo} className="remove-button"><i className="fa fa-close" /></button>
+        <input
+          className="input"
+          type="checkbox"
+          checked={this.props.done}
+          onChange={this.handleChange} />
+        {this.props.text}
       </div>
     )
   }

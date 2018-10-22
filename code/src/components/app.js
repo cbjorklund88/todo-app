@@ -5,9 +5,15 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      todoItems: [],
-      inputText: ""
+    if (localStorage.getItem("userTodoItems")) {
+      this.state = {
+        todoItems: JSON.parse(localStorage.getItem("userTodoItems"))
+      }
+    } else {
+      this.state = {
+        todoItems: [],
+        inputText: ""
+      }
     }
   }
 
@@ -21,6 +27,7 @@ class App extends React.Component {
     const currentItems = this.state.todoItems
     const item = { text: this.state.inputText, done: false }
     currentItems.push(item)
+    localStorage.setItem("userTodoItems", JSON.stringify(currentItems))
     this.setState({
       todoItems: currentItems
     })
@@ -29,9 +36,19 @@ class App extends React.Component {
   updateTodoItem = (index, done) => {
     const currentItems = this.state.todoItems
     currentItems[index].done = done
+    localStorage.setItem("userTodoItems", JSON.stringify(currentItems))
     this.setState({
       todoItems: currentItems
     })
+  }
+
+  handleRemove = (index) => {
+    const currentItems = this.state.todoItems
+    currentItems.splice(index, 1)
+    this.setState({
+      todoItems: currentItems
+    })
+    localStorage.setItem("userTodoItems", JSON.stringify(currentItems))
   }
 
   render() {
@@ -42,18 +59,18 @@ class App extends React.Component {
           <form>
             <div className="input-container">
               <input type="text" onChange={this.handleInputChange} placeholder="Add item.." />
-              <button type="button" onClick={this.addTodoItem}>Add</button>
+              <button type="button" className="submit" onClick={this.addTodoItem}>Add</button>
             </div>
+            {this.state.todoItems.map((item, index ) => (
+              <TodoItem
+                text={item.text}
+                key={index}
+                index={index}
+                done={item.done}
+                updateTodoItem={this.updateTodoItem}
+                removeTodo={this.handleRemove} />
+            ))}
           </form>
-
-          {this.state.todoItems.map((item, index ) => (
-            <TodoItem
-              text={item.text}
-              key={index}
-              index={index}
-              done={item.done}
-              updateTodoItem={this.updateTodoItem} />
-          ))}
         </div>
       </div>
     )

@@ -21,10 +21,10 @@ input {
   outline: none;
 }
 
-button {
+.submit {
   border: 2px solid black;
   outline: none;
-  margin-left: 30px;
+  margin-left: 10px;
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -33,13 +33,20 @@ button {
 .wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 600px;
 }
 
 .todo-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 600px;
+  height: 50%;
+}
+.input-container{
+  height: 50%;
+}
+.added-item-container {
+  margin-left: 10px;
+  margin-top: 10px;
 }
