@@ -2,6 +2,7 @@
   "name": "react-starter",
   "version": "1.2.2",
   "private": true,
+  "homepage": "https://cbjorklund88.github.io/todo-app",
   "dependencies": {
     "eslint-config-technigo": "^1.4.0",
     "react": "^16.0.0",
